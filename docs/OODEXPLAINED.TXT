@@ -1,0 +1,33 @@
+OOD Design Explained.
+
+1) Drawing the board with the entities.
+    For this, the game needs to display the maze board with a few entities, a wall,
+    the player, cheese and the cats.
+
+    How my OOD supports this:
+
+    It involes a few classes, GameState, and the UI. The GameState class will be responsible
+    for mainting the entire stae of the game, this inclcudes the maze layout. It will store all the
+    entities positon and the maze's structure. The UI will be displaying the game and other information.
+    My strategy for this design is to keep the display logic in my UI and the rest of the code for generating the maze
+    and updating it etc, will be hopefully easier to manage and will be more modular. The GameState will hold
+    all the information like the layout of the maze and entitiy positions, which the UI will then use to display.
+    My hope is that by having a modular design, it will make updating the game easier and as said in class be able
+    to be easily transformed to a webapp.
+
+2) Processing and Validating the player's moves.
+   For this, the players moves W,A,S,D need to be checked for validity to make sure it isnt running into a wall, as well
+   as other collision actions like collecting the cheese and running into a cat.
+
+   How my OOD supports this:
+
+   This involes a few classes, the Player class, the GameState class and the RandomMovementGenerator class. The player class
+   will have all information about the player like their current position and movement. The GameState class will handle the
+   validation, updating the game, and the interactions the player can have with the cheese and cats. The RandomMovementGenerator
+   will be used for the cats movement. The GameState class will use it to determine a valid position for the cat.
+   I designed my game logic this was to have the GameState class serve as a manager for the movement and entity actions.
+   By having a single area to manage this logic, I'm  hoping it will be easier to manage since all interactions between entities
+   are handled in one place. I hope this design will be effective since having all game logic be handled in GameState, it will
+   have consistent logic and any changes I want to make to any action or obstacle, I won't have to worry about it affecting
+   Player or the UI or any other classes.
+
